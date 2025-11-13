@@ -1,5 +1,5 @@
-import { useId } from 'react'
 import { useSearchForm } from '@/hooks/useSearchForm'
+import { useId } from 'react'
 
 export function SearchFormSection({ onTextFilter, onSearch }) {
 	const idText = useId()
