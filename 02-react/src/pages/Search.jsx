@@ -1,34 +1,41 @@
-import { useEffect } from 'react'
-
 import { JobListings } from '@/components/JobListings.jsx'
 import { Pagination } from '@/components/Pagination.jsx'
 import { SearchFormSection } from '@/components/SearchFormSection.jsx'
-import { useFilters } from '@/hooks/useFilters'
+import { useJobs } from '@/hooks/useJobs'
 
 export default function SearchPage() {
 	const {
+		jobs,
+		loading,
+		error,
+		total,
 		currentPage,
 		totalPages,
-		jobsWithTextFilter,
-		pagedResults,
 		handleSearch,
 		handleTextFilter,
 		handlePageChange,
-	} = useFilters()
+	} = useJobs()
 
-	useEffect(() => {
-		document.title = `Resultados: ${jobsWithTextFilter.length}, Página ${currentPage} - DevJobs`
-	}, [currentPage, jobsWithTextFilter])
+	const title = loading
+		? `Cargando... - DevJobs`
+		: `Resultados: ${total}, Página ${currentPage} - DevJobs`
 
 	return (
 		<main>
+			<title>{title}</title>
 			<SearchFormSection
 				onSearch={handleSearch}
 				onTextFilter={handleTextFilter}
 			/>
 
 			<section>
-				<JobListings jobs={pagedResults} />
+				{loading ? (
+					<p>Cargando ofertas de empleo...</p>
+				) : error ? (
+					<p>Error al cargar las ofertas de empleo.</p>
+				) : (
+					<JobListings jobs={jobs} />
+				)}
 				<Pagination
 					currentPage={currentPage}
 					totalPages={totalPages}
