@@ -1,15 +1,15 @@
-import { JobCard } from './JobCard.jsx'
+import { JobCard } from '@/components/JobCard.jsx'
 
-export function JobListings ({ jobs }) {
-  return (
-    <>
-      <h2>Resultados de búsqueda</h2>
+export function JobListings({ jobs }) {
+	return (
+		<>
+			<h2>Resultados de búsqueda</h2>
 
-      <div className="jobs-listings">
-        {jobs.map(job => (
-          <JobCard key={job.id} job={job} />
-        ))}
-      </div>
-    </>
-  )
+			<div className="jobs-listings">
+				{jobs.map((job) => (
+					<JobCard key={job.id} job={job} />
+				))}
+			</div>
+		</>
+	)
 }

@@ -1,19 +1,29 @@
-export function Header () {
-  return (
-    <header>
-      <h1>
-        <svg fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"
-          viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-          <polyline points="16 18 22 12 16 6"></polyline>
-          <polyline points="8 6 2 12 8 18"></polyline>
-        </svg>
-        DevJobs
-      </h1>
+import { Link } from '@/components/Link'
 
-      <nav>
-        <a href="">Empleos</a>
-      </nav>
+export function Header() {
+	return (
+		<header>
+			<Link href="/" style={{ color: 'white', textDecoration: 'none' }}>
+				<h1>
+					<svg
+						fill="none"
+						stroke="currentColor"
+						strokeLinecap="round"
+						strokeLinejoin="round"
+						strokeWidth="2"
+						viewBox="0 0 24 24"
+						xmlns="http://www.w3.org/2000/svg"
+					>
+						<polyline points="16 18 22 12 16 6"></polyline>
+						<polyline points="8 6 2 12 8 18"></polyline>
+					</svg>
+					DevJobs
+				</h1>
+			</Link>
 
-    </header>
-  )
+			<nav>
+				<Link href="/search">Empleos</Link>
+			</nav>
+		</header>
+	)
 }
